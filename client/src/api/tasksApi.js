@@ -12,14 +12,25 @@ export const register = async (body) => {
 
 // login user
 export const login = async (body) => {
-  console.log("BASE_URL ===>", BASE_URL);
-  const res = await fetch(`${BASE_URL}/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  })
-  return res.json()
-}
+  try {
+    const res = await fetch(`${BASE_URL}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      throw new Error(`HTTP ${res.status}: ${errorText}`);
+    }
+
+    return res.json();
+  } catch (err) {
+    console.error("Login fetch error:", err.message);
+    return { message: err.message };
+  }
+};
+
 
 // get all tasks of user
 export const getTasks = async (token) => {

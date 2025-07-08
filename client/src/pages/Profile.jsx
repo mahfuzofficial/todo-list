@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import "../styles/Profile.css"
-import { getUserProfile } from "../api/tasksApi"  // ✅ Add this
+import { getUserProfile } from "../api/tasksApi" 
 
 export default function Profile() {
   const [user, setUser] = useState({ name: "", email: "" })

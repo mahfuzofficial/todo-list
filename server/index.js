@@ -11,9 +11,9 @@ connectDB()
 
 const app = express()
 
-// ✅ CORS config
+// CORS config
 app.use(cors({
-  origin: ["http://localhost:3000"], // 👈 Add your frontend origin
+  origin: ("*"), 
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
@@ -23,7 +23,7 @@ app.options("*", cors());
 
 
 
-// ✅ Explicitly handle all OPTIONS requests
+// Explicitly handle all OPTIONS requests
 app.options("*", cors())
 
 app.use(express.json())

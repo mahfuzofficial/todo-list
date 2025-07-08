@@ -20,7 +20,6 @@ export default function App() {
     localStorage.setItem("dark", newMode)
   }
 
-  // ✅ Always apply dark/light class to <body>
   useEffect(() => {
     document.body.className = dark ? "dark" : ""
   }, [dark])
