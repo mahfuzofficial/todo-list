@@ -13,10 +13,12 @@ const app = express()
 
 // ✅ CORS config
 app.use(cors({
-  origin: "*",
+  origin: process.env.CLIENT_URL,
+  credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }))
+
 
 // ✅ Explicitly handle all OPTIONS requests
 app.options("*", cors())
