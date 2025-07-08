@@ -12,6 +12,7 @@ export const register = async (body) => {
 
 // login user
 export const login = async (body) => {
+  console.log("BASE_URL ===>", BASE_URL);
   const res = await fetch(`${BASE_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

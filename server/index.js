@@ -13,11 +13,14 @@ const app = express()
 
 // ✅ CORS config
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: ["http://localhost:3000"], // 👈 Add your frontend origin
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
-}))
+}));
+
+app.options("*", cors());
+
 
 
 // ✅ Explicitly handle all OPTIONS requests
