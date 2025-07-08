@@ -12,6 +12,7 @@ import {
   DndContext,
   closestCenter,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors,
 } from "@dnd-kit/core"
@@ -31,8 +32,16 @@ export default function Home() {
   const [filter, setFilter] = useState("all")
   const [showForm, setShowForm] = useState(false)
 
-  const sensors = useSensors(useSensor(PointerSensor))
-
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 200,
+        tolerance: 8,
+      },
+    })
+  )
+  
   // Local date string to avoid timezone bugs
   const [todayStr, setTodayStr] = useState(() =>
     new Date().toLocaleDateString("en-CA")
