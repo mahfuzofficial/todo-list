@@ -400,3 +400,6 @@ body {
   color: white;
   font-weight: bold;
 }
+.task, .drag-handle {
+  touch-action: none;
+}
