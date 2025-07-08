@@ -1,0 +1,56 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.profile-card {
+  max-width: 512px;
+  width: 100%;
+  background: var(--bg);
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.profile-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.profile-avatar {
+  width: 128px;
+  height: 128px;
+  background-image: url("https://www.w3schools.com/howto/img_avatar.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  background-color: #343537;
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.profile-email {
+  color: var(--sub);
+}
+
+.profile-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: var(--box);
+  color: var(--text);
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.profile-option:hover {
+  background-color: var(--accent);
+  color: white;
+}
