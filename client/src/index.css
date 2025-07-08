@@ -33,9 +33,8 @@ body {
   color: var(--text);      
   transition: background 0.3s, color 0.3s;
 }
-
 body.dark {
-  background: var(--bg); /* Force dark background */
+  background: var(--bg);
 }
 
 /* Reset & Base */
@@ -102,13 +101,13 @@ body {
 /* Layout */
 .main {
   display: flex;
-  justify-content: space-evenly; /* space between side and content */
+  justify-content: space-evenly;
   align-items: flex-start;
   padding: 24px;
   background: var(--bg);
   gap: 24px;
   min-height: calc(100vh - 64px);
-  flex-wrap: wrap; /* for mobile responsiveness */
+  flex-wrap: wrap;
 }
 .side {
   width: 280px;
@@ -138,6 +137,7 @@ body {
 .filter:hover {
   background: var(--card-muted);
 }
+
 /* Content Area */
 .content {
   flex: 1;
@@ -177,6 +177,8 @@ body {
   padding: 10px 16px;
   border-radius: 12px;
   margin: 6px 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .icon-box {
   width: 44px;
@@ -191,11 +193,15 @@ body {
 }
 .task-info {
   flex: 1;
+  min-width: 0;
 }
 .task-info .title {
   font-weight: 600;
   line-height: 1.2;
   color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .task-info .meta {
   font-size: 0.85rem;
@@ -289,7 +295,6 @@ body {
   text-decoration: none;
   font-size: 0.9rem;
 }
-
 .edit-fields {
   display: flex;
   flex-direction: column;
@@ -329,8 +334,11 @@ body {
   }
 
   .task {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   .edit-fields {
