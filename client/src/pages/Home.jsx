@@ -124,7 +124,7 @@ export default function Home() {
       if (!editText.trim()) return alert("Title is required")
 
       try {
-        const res = await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/tasks/${task._id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

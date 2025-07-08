@@ -2,27 +2,21 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import "../styles/Profile.css"
+import { getUserProfile } from "../api/tasksApi"  // ✅ Add this
 
 export default function Profile() {
   const [user, setUser] = useState({ name: "", email: "" })
   const token = localStorage.getItem("token")
   const navigate = useNavigate()
 
-  // load user data from backend
   useEffect(() => {
     if (!token) return navigate("/login")
 
-    fetch("https://todo-backend-sig0.onrender.com/api/profile", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then((res) => res.json())
+    getUserProfile(token)  // ✅ Use this helper
       .then((data) => setUser(data))
       .catch((err) => console.log("User fetch error:", err))
   }, [])
 
-  // logout and clear token
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to logout?")
     if (confirmLogout) {
@@ -36,7 +30,6 @@ export default function Profile() {
       <Navbar />
       <div className="main profile-container">
         <div className="content profile-card">
-          {/* avatar and name */}
           <div className="profile-header">
             <div
               className="profile-avatar"
@@ -51,16 +44,11 @@ export default function Profile() {
             </div>
           </div>
 
-          {/* edit button (not working yet) */}
-          <div
-            className="profile-option"
-            onClick={() => alert("Edit coming soon")}
-          >
+          <div className="profile-option" onClick={() => alert("Edit coming soon")}>
             <div className="icon-box">✏️</div>
             <p>Edit Profile</p>
           </div>
 
-          {/* logout button */}
           <div className="profile-option" onClick={handleLogout}>
             <div className="icon-box">🚪</div>
             <p>Logout</p>
